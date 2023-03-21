@@ -1,0 +1,455 @@
+<!-- TO DO -->
+<!-- https://www.w3schools.com/howto/howto_js_popup.asp - figure out how to do pop-up login page -->
+<!-- https://coolors.co/30b589-afe9d5-1b654c-ffffff-ff6b6b 			 colour pallet -->
+
+
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Displayed on tab in browser -->
+		<title>Wordle Report</title>
+		<link rel="icon" type="image/x-icon" href="WordleIcon.webp">
+
+		<!-- Link to css stylesheet -->
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<!-- imports font families -->
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+			@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto+Slab&display=swap');
+
+
+
+		</style>
+
+		<script type="text/javascript" src="password.js"></script>
+
+	</head>
+
+	<body>
+
+<!-- 		<button onclick="topFunction()" id="myBtn" title="Go to top">Go to Top</button> -->
+
+		<!-- Header -->
+		<div class="header">
+			<img src="Title.png" width=600>
+<!-- 			<h1>WORDLE</h1>  -->
+			<p>Recreation of the game Wordle for my Leaving Certificate Computer Science Project</p>
+		</div>
+
+		<!-- Navigation Bar -->
+		<div class="navbar">
+			<a href="#brief">Meeting the Brief</a>
+			<a href="#investigationAndPlan">Investigation and Plan</a>
+			<a href="#design">Design</a>
+			<a href="#implementation">Implementation</a>
+			<a href="#testing">Testing</a>
+			<a href="#evaluation">Evaluation</a>
+			<a href="#references">References</a>
+			<a href="#word">Summary Word Count</a>
+<!-- 			<a href="video.html">Video</a> -->
+
+	
+		</div>
+
+		<!-- Meeting the Brief -->
+		<div class="brief" id="brief">
+			<h2>Meeting the Brief</h2>
+			<!--The Video-->
+			<div class="Video">
+					<hr><br><br>
+					<video width="100%" controls>
+						<source src="ProjectVideo.mov" type="video/mp4">
+					</video>
+			<br>
+			<hr>
+			<p id="demo"></p>
+
+			<div class="responsiveSmallLeft">
+				<div class="gallery">
+					<img src="CompletedGame.png" alt="Play Game To Completion">
+					<div class="desc">
+					    Play Game to Completion
+					</div>
+
+				</div>
+			</div>
+
+			<p>For my Leaving Certificate Computer Science Project, I designed and developed an interactive computer model based on the popular word-guessing game, Wordle. My aim was to meet all of the project requirements.<br><br></p>
+
+			<p>To achieve these requirements, I first created a single player mode that operates the same way as the official Wordle game. This allowed me to meet the requirement of allowing the user to play the game to completion. However, for the multiplayer mode, I had to modify the rules of the game to create my own game mode, as no existing multiplayer official Wordle game exists. <br><br></p> 
+			<div class="responsiveSmallRight">
+				<div class="gallery">
+					<img src="Multiplayer Inputs.png" alt="Play Game To Completion">
+					<div class="desc">
+					    Accept different inputs
+					</div>
+
+				</div>
+			</div>
+			<p>
+			I decided to let players take turns playing the game for a set number of rounds, with the player who has the least amount of guesses overall being declared the winner. To meet the requirement of accepting a minimum of three different inputs, I programmed this gamemode to accept the following inputs: the word guesses themselves, the names of the two players, and the number of rounds they want to play. <br><br>
+
+			All input data is validated to ensure that the word guesses are five letters long and are real, accepted words. In terms of randomness, a word is chosen completely at random each time the game is run, ensuring that the game behaves differently each time.<br><br></p>
+
+			<p>
+			To meet the requirement of operability in a variety of modes, I created a simulation play mode using a series of algorithms that I developed. The simulation play has two options: random word choice and machine learning word choice. The random choice means that the bot will pick words completely at random and slowly narrow down the pool of words it is choosing from based on which colors each of its guesses gets. The machine learning option ranks every word based on its average performance in all logged games, and each word is given a q-value corresponding to this performance. The machine learning algorithm then chooses words with a weighted random, meaning words with a higher q-value are more likely to be chosen. </p> 
+
+			<p>
+			I also met the advanced requirement of storing results data from the game that has been played to an external file. All games played, whether it is single player, multiplayer, or simulation, are logged to a .CSV file. Using this storage of results, I was able to perform statistical analysis and display graphs that showed the words with the top q-values, the most common letters in the guessed words, and the average number of guesses it takes to get the word.<br><br>
+
+			These graphs allow me to test hypotheses and make future predictions by changing parameters within the game, for example: <br><br></p>
+			<div class="clearfix"></div>
+			<hr>
+
+			<br>
+			<b>1.	"Does the machine learning algorithm improve the performance of the simulation play mode compared to random word choice?"</b><br>
+					<!--examples of graphs-->
+			<div class="clearfix"></div>
+			<div class="responsive">
+				<div class="gallery">
+			     	 <img src="1000GenGuessFrequency.png" alt="Random Guess Frequency" width="900">
+			    <div class="desc">Guess frequency distribution for 1000 itereations of random guessing.<br>
+			    This won 97.2% of the time.</div>
+			  </div>
+			</div>
+
+
+			<div class="responsive">
+			  <div class="gallery">
+			      <img src="MachineLearningGuessFreq.png" alt="Machine Learning Guess Frequency" width="900">
+			    <div class="desc">Guess frequency distribution for 1000 itereations of Machine Learning guessing.<br>
+			    There is a significant improvement, it won 99.1% of the time and there is more wins within 3 guesses, and less at 6 guesses.</div>
+			  </div>
+			</div>
+
+			<div class="clearfix"></div>
+			<hr>
+			<br>
+			<b>2.	"Does the colours the simulation algorithm has access to affect its performance?"</b><br>
+			<div class="clearfix"></div>
+			<div class="responsive3">
+				<div class="gallery">
+			     	 <img src="1000GenNoGreen.png" alt="No Green Guess Frequency" width="900">
+			    <div class="desc">
+			    	<b>No Green</b>
+			    	<br>Guess frequency distribution when the bot does not know if letters are green.<br>
+			    	This won 84.6% of the time.</div>
+			  </div>
+			</div>
+
+
+			<div class="responsive3">
+			  <div class="gallery">
+			      <img src="1000GenNoYellow.png" alt="No Grey Guess Frequency" width="900">
+			    <div class="desc">
+			    	<b>No Yellow</b>
+			    	<br>Guess frequency distribution when the bot does not know if letters are yellow.<br>
+			    	This won 77.7% of the time.</div>
+				</div>
+			  </div>
+			</div>
+
+			<div class="responsive3">
+			  <div class="gallery">
+			      <img src="1000GenNoGrey.png" alt="No Grey Guess Frequency" width="900">
+			    <div class="desc">
+			    	<b>No Grey</b>
+			    	<br>Guess frequency distribution when the bot does not know if letters are grey.<br>
+			    	This won 67% of the time, making the biggest impact of the 3 colours.<br></div>
+				</div>
+			  </div>
+			</div>
+			<br>
+			</p>
+
+
+
+		
+		</div>
+		<div class="clearfix"></div>
+		<hr>
+		<!-- Investigation and Plan -->
+		<div class="investigationAndPlan" id = "investigationAndPlan">
+			<h2>Investigation and Plan</h2>
+			<p>
+				Based on my research, I found that a computer model is any program which simulates events or processes to try and mimic what would happen in a real life scenario. With this in mind I knew I wanted to recreate an existing game and I would make use of abstraction to simplify the functions within that game. Abstraction means I will cut out elements of the game that aren’t necessary for my model.<br><br>
+
+				When researching the game to model, I looked into word-guessing games as I felt they would generate interesting data. I found that there were many popular word-guessing games, such as Hangman and Scrabble. However, I eventually settled on Wordle after my English teacher made us play the game daily.</p>
+				<div class="clearfix"></div>
+				<div class="responsive3">
+					<div class="gallery">
+				     	 <img src="HangMan.png" alt="No Green Guess Frequency" width="900">
+				    <div class="desc">
+				    	<b>Hangman Game</b>
+					</div>
+				  </div>
+				</div>
+				<div class="responsive3">
+				  <div class="gallery">
+				      <img src="OfficialWordle.png" alt="No Grey Guess Frequency" width="900">
+				    <div class="desc">
+				    	<b>New York Times' Wordle</b>
+					</div>
+					</div>
+				</div>
+				<div class="responsive3">
+				  <div class="gallery">
+				      <img src="Scrabble.jpg" alt="No Grey Guess Frequency" width="900">
+				    <div class="desc">
+				    	<b>Scrabble Online</b>
+				    </div>
+					</div>
+				  </div>
+				</div>
+
+
+
+				<div class="clearfix"></div>
+
+				<div class="responsiveMediumRight">
+					<div class="gallery">
+						<img src="Q-LearningExample.gif" alt="Play Game To Completion">
+						<div class="desc">
+						    Reinforcement Learning Algorithim Solving a Maze
+						</div>
+
+					</div>
+				</div>
+				<p>
+				<br><br>
+				In order to create the model, I began researching ways to emulate Wordle’s gameplay using Python. I originally wanted to make a purely text based game to be played in the Python console, to do this I found lists of acceptable Wordle words online, I could import these to verify the values inputted in my game. To meet the requirement of logging data, I wanted to make use of the CSV plugin. This would allow me to write data from my game onto a table.<br><br>
+
+
+				After a little more research, I found that I could use a plugin called PySimpleGUI to create a user interface for my game. I also found that I could use the pandas plugin to perform statistical analysis on my data, and use the Matplotlib plugin to represent this data in graphical format.<br><br>
+
+				For the singleplayer and multiplayer modes, I want to stay as close to the source material as possible, only applying light abstraction to the model. For the simulation mode, I wanted to do something different. I’d like to model an AI based on the data I gather from the gameplay. I began researching different methods of AI training.<br><br>
+
+				I was particularly interested in reinforcement learning, this type of machine learning is usually used in path-finding. I thought that there were similarities between the way people solve mazes and the way we guess Wordle words. We can rule out different paths/letters and eventually, through the process of elimination, we find the exit/word. I imagine that this way, the AI will be rewarded as it gets closer and closer to the correct word.<br><br>
+
+				I found several different algorithms in order to apply this reinforcement learning process, many were far too complicated for my purposes. I wanted something simple and robust. I chose an average-performance rating method, this would work well with the data I would be generating.<br><br>
+
+
+			</p>
+			<div class="clearfix"></div>
+		</div>
+
+		<hr>
+
+		<!-- Design -->
+		<div class="design" id="design">
+			<h2>Design</h2>
+
+
+			<p>
+				
+				In order to meet the basic requirements, I will create a model of Wordle, that allows the user to interact with the model and play the game to completion. The game will include a randomly selected word each time it runs. To meet the second requirement, the game will accept a minimum of three different inputs, which will be validated by the model.<br><br>
+
+				The game will be interactive and operable in a variety of different modes, including single player, multi-player, and simulation play mode. To meet the advanced requirements, the model will be extended to store the results data from each game that is played. I plan to store the words that were guessed, the colours that those words received and the amount of guesses it took to win.<br><br>
+
+				I will develop algorithms to perform statistical analysis on this data set, I will find trends in the data, and communicate the resulting information as graphs. The game will also be used to test hypotheses and make future predictions by allowing changes to parameters within the game.<br><br>
+
+				After researching different methods of machine learning, I think I will make use of reinforcement learning to train the AI. This technique ranks a word based on its average performance, the AI will be more likely to select words that perform better on average. This will reward the AI for guessing words that receive correct letters and it will improve over time.<br><br>
+
+				To ensure a streamlined user experience, I will implement abstraction in the design of the game. For example, I will remove the keyboard that is present in the original Wordle game, as it is primarily designed for mobile play. Since my game will be designed for PC only, users will already have a physical keyboard in front of them, so there is no need to include one in the GUI. This would simplify the interface and make the game more user-friendly. I don’t think I will include Wordle’s features to share scores, as my version of the game will not be restricted to daily play, so this feature is irrelevant.<br><br>
+
+				I will ensure that the design of the game is adaptable and flexible, so that it can be modified or updated in the future as necessary. This will involve using modular design principles and following best practices in software development to ensure that the code is structured in a logical and organised way. To provide a clear overview of the game's functions, I have created a detailed flowchart as part of the design process. By creating this flowchart, I was able to identify some potential issues or areas that needed further development. <br><br>
+
+			</p>
+			<div class="flowchart">
+				<a target="_blank" href="LC_CompSci_Flowchart.png">
+				<img src="LC_CompSci_Flowchart.png" align="center" alt="Flowchart" width=100%></a>
+			</div>
+			<div class="clearfix"></div>
+			<hr>
+		</div>
+
+		<!-- Implementation -->
+		<div class="implementation" id="implementation">
+			<h2>Implementation</h2>
+			<div class="responsiveMediumRight">
+				<div class="gallery">
+					<img src="WordleTextVersion.png" alt="Text-based Console Version">
+					<div class="desc">
+					    Text-based Console Version
+					</div>
+
+				</div>
+			</div>
+			<p>
+
+				For my project, I decided to use Python as my programming language as it was the language that I was most familiar with using, having used it extensively throughout my coursework.<br><br>
+
+				At first, my plan was to have the entire game take place within the python console, and I even created a prototype for it. However, during the implementation stage, I realised that a full-fledged GUI would be a better fit. Despite this change, the process of validating words and generating their corresponding colours was made a lot easier because of the insights I gained from creating the prototype.<br><br>
+
+				To create this GUI, I made use of the plugin PySimpleGUI. This design was much more user-friendly and aesthetically pleasing than the text-based console version. Implementing this GUI proved to be a challenge as I had to completely learn the plugin from scratch. After a lot of research and testing, I was able to overcome this challenge by breaking elements of the GUI into smaller, more manageable sections.<br><br>
+
+				<b>Colour Function Explained:</b><br><br>
+				In order to display the letters of a guessed word with their correct colours, I developed a function that could be called again and again.<br>
+				<br>It takes in three arguments; “guess”, “wordList” and “chosenWord”. First the function appends the guessed letters to the “previousGuesses” list, this is for the purpose of logging all previous guesses to a .CSV once the game is complete. It then initialises some colour variables using hexadecimal colour codes to represent grey, green and yellow.<br><br>
+
+				Next, the function converts the “chosenWord” string, which is the correct word for that particular game, into a list of its constituent letters. It then checks each letter of the “guess” string against the corresponding letter in the “chosenWord” list. <br><br>
+
+				If the letters match, the colour of the guessed letter is set to green. If the letter isn’t an exact match, the function checks to see if the guessed letter is in the “chosenWord” in any position. If it is, the colour of the guessed letter is set to yellow. If the guessed letter doesn’t match any letter in the “chosenWord” list, the colour is set to grey.<br><br>
+
+				Letters are also taken out of the “chosenWord” list once a corresponding letter from the guessed word is matched. This is to handle duplicate letters. For instance, if the guessed word has two occurrences of the letter "O" while the answer word only has one, only one of the guessed "O"s will be coloured yellow. Finally, this list of colour values is appended to the “previousColours” list, also for the purpose of logging data at the end of the game. <br><br>
+
+				<b>Problem Encountered:</b><br><br>
+
+				While implementing my Machine Learning Simulation play, I faced a challenge with the algorithm I created to rank words based on their average performance on a scale of 1-10. The problem was that if a word was guessed correctly only once, it would receive a perfect score of 10, which could be misleading. To address this issue, I introduced a discovery constant to the AI that allows the user to adjust its level of curiosity. With a higher constant, the bot makes more random guesses, while with a lower constant, it selects words with the highest q-value. This helps bring down the score of words that were guessed correctly only once, providing a more accurate ranking. 
+
+			</p>
+			<div class="clearfix"></div>
+				<div class="responsive">
+					<div class="gallery">
+				     	 <img src="colourFunction01.png" alt="Random Guess Frequency" width="900">
+				    <div class="desc">The function takes in three arguements.<br>
+				    It also initialises variables for the three different hexadecimal values.</div>
+				  </div>
+				</div>
+
+
+				<div class="responsive">
+				  <div class="gallery">
+				      <img src="colourFunction02.png" alt="Machine Learning Guess Frequency" width="900">
+				    <div class="desc">The function then runs the relevant checks of the guessed word against the game's correct word.</div>
+				  </div>
+				</div>
+
+				<div class="clearfix"></div>
+			<hr>
+		</div>
+
+		<!-- References -->
+		<div class="testing" id="testing">
+			<h2>Testing</h2>
+
+			<div class="responsiveLargeLeft">
+				<div class="gallery">
+					<img src="testTable.PNG" alt="Text-based Console Version">
+
+
+				</div>
+			</div>
+			<p>
+				<br>Testing was an integral part of the development process for this model. Extensive testing was conducted on both the gameplay and functions of the model, which helped identify and resolve many issues that arose during the design process.<br><br>
+
+				One of the tests carried out was a user experience test, where a group of my friends with no prior knowledge of the game were asked to test it out and provide feedback. The feedback received was extremely useful, and some of the setting names were changed to make them more user-friendly based on their feedback. This was an example of black box testing, where users had no knowledge of the inner workings of the model.<br><br>
+
+				Several white box tests were also conducted by myself. These tests involved testing out the machine learning simulations and algorithms. While conducting tests on the original algorithm, I found that too many words were getting a perfect q-value score of 10. To resolve this issue, I added a discovery constant feature to the machine learning simulation.<br><br> 
+
+				Aswell as this, different colour parameters were tested to identify the most important colour for the algorithm. I ran simulations to randomly choose words but didn’t give it access to certain colours to see which had the biggest effect and I found that green was the most important colour to reward.<br><br>
+
+				The testing process played a crucial role in the development of this model. Through user experience testing and whitebox testing, I was able to identify and resolve many issues. The results of the testing were used to make important changes to the design of the model, resulting in a more intuitive and effective product.<br><br>
+
+			</p>
+			<hr>
+		</div>
+
+		<div class="evaluation" id="evaluation">
+			<h2>Evaluation</h2>
+
+				<div class="responsiveMediumLeft">
+					<div class="gallery">
+						<img src="RequirementsList.PNG" alt="Text-based Console Version">
+
+
+					</div>
+				</div>
+			<p>
+				<br><br>
+				In evaluating my project, I have successfully met both the basic and advanced requirements and the final product meets most of the project goals that were set out during the design stage. Overall, I believe it's a very strong project and I am pleased with how it came out.<br><br></p>
+
+
+
+				<p>
+				However, there were a few areas where the final product fell short. For instance, the AI could be made to iterate every generation rather than just every time the code is run, which would improve its efficiency. Additionally, some of the algorithms could be optimised for better performance and to make the code run faster, I could update the q-values for the words guessed after every game rather than trying to make a completely new list every time machine learning is run. More descriptions could be added to certain settings and buttons so that the user has a better understanding of their functionality. <br><br>
+
+				Despite this,the project is highly functional, with the machine learning mode being the standout feature. Also the colour theme and general design is consistent with the source material, making it aesthetically pleasing.<br><br>
+
+				In conclusion, while there is always room for improvement, I am proud of the final product and believe it has the potential to be even better with further development. I look forward to continuing my exploration of the world of computer science and all it has to offer.<br><br>
+
+			</p>
+			<div class="clearfix"></div>
+		<hr>
+		</div>
+
+		<div class="references" id="references">
+			<h2>References</h2>
+			<p>During the research and development of the project, I used these references:</p>
+				<ul>
+					<li><a href="https://www.pysimplegui.org/en/latest/#elements">PySimpleGUI Documentation</a></li>
+					<li><a href="https://matplotlib.org/stable/index.html">Matplotlib Documentation</a></li>
+					<li><a href="https://numpy.org/doc/1.24/">NumPy Documentation</a></li>
+					<li><a href="https://pandas.pydata.org/docs/">Pandas Documentation</a></li>
+					<li><a href="https://www.w3schools.com/">W3 Schools</a></li>
+					<li><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+					<li><a href="https://github.com/">GitHub</a></li>
+					<li><a href="https://towardsdatascience.com/integrating-pyplot-and-pysimplegui-b68be606b960">Towards Data Science - Plotting graphs on GUI</a></li>
+					<li><a href="https://www.analyticsvidhya.com/blog/2017/01/introduction-to-reinforcement-learning-implementation/">Analytics Vidhya - Reinforcement Learning</a></li>
+				</ul>
+			
+			<hr>
+		</div>
+
+		<!-- Summary Word Count -->
+		<div class="word" id="word">
+			<h2>Summary Word Count</h2>
+
+		</div>
+
+		<div class="table">
+			<table>
+				<tr>
+					<th>Section</th>
+					<th>No. of Words</th>
+				</tr>
+				<tr>
+					<td>1. Meeting the Brief</td>
+					<td id="numbers">469</td>
+				</tr>
+				</tr>
+				<tr>
+					<td>2. Investigation and Plan</td>
+					<td id="numbers">450</td>
+				</tr>
+				</tr>
+				<tr>
+					<td>3. Design</td>
+					<td id="numbers">440</td>
+				</tr>
+				<tr>
+					<td>4. Implementation</td>
+					<td id="numbers">551</td>
+				</tr>
+				<tr>
+					<td>5. Testing</td>
+					<td id="numbers">275</td>
+				</tr>
+				<tr>
+					<td>6. Evaluation</td>
+					<td id="numbers">233</td>
+				</tr>
+				<tr>
+					<td>Total:</td>
+					<td id="numbers">2418</td>
+				</tr>
+			</table>
+		</div>
+
+		<!-- Footer -->
+		<div class="footer">
+<!-- 			<h1>END OF PAGE</h1> -->
+			<p>Thank you!</p>
+
+			<div class ="footerC">
+				<p>Exam No. 155162</p>
+		</div>
+
+
+
+	</body>
+</html>	
