@@ -18,3 +18,5 @@ Curiosity Control: Users can fine-tune the bot's exploratory behavior and allow 
 
 ***Graphing Mode:***
 Beyond gameplay, my model offers a Graphing Mode enabling users to create custom graphs within the GUI. Harnessing data from various game modes, users can generate insightful graphs and save them as named PDFs, all within my custom GUI.
+
+This repository showcases my proficiency in Python, GUI development, machine learning, data analysis, and user interface design. The accompanying project report provides in-depth insights into the bot's impressive performance, underscoring the project's complexity.
