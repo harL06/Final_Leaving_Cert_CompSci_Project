@@ -1,3 +1,8 @@
+Find the video section of my report here: https://youtu.be/kVWKAynsGl4
+For more info, you can download the report HTML page from the repository.
+
+
+
 Model of New York Times' Wordle, my ambitious Python project submitted as my Leaving Certificate Computer Science Project. This repository highlights an array of skills I've developed through the recreation of the Wordle game.
 
 ***Project Highlights:***
