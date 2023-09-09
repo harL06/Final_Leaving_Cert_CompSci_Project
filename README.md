@@ -1,6 +1,6 @@
 Model of New York Times' Wordle, my ambitious Python project submitted as my Leaving Certificate Computer Science Project. This repository highlights an array of skills I've developed through the recreation of the Wordle game.
 
-*Project Highlights:*
+**Project Highlights:**
 
 User-Friendly Interface:
 Crafted entirely from scratch, the project features an intuitive and visually engaging graphical user interface (GUI).
